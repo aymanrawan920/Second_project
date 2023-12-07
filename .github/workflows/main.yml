@@ -1,1 +1,25 @@
 
+on:
+  push:
+    branches:
+      - master
+
+
+
+
+jobs:
+   build:
+      runs-on: ubuntu-latest
+
+     
+      steps:
+        - uses: actions/checkout@v3
+
+        - name: 'Login to Docker hub'
+          run: docker login --username ${{secrets.HAJAR_USERNAME}} --password ${{secrets.HAJAR_Token}}
+        
+        - name: 'Build docker image'
+          run: docker build -t ${{secrets.HAJAR_USERNAME}}/hajar .
+
+        - name: 'pushing to docker hub'
+          run: docker push ${{secrets.DOCKER_USERNAME}}/hajar
