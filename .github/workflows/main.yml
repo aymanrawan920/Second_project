@@ -22,4 +22,4 @@ jobs:
           run: docker build -t ${{secrets.HAJAR_USERNAME}}/hajar .
 
         - name: 'pushing to docker hub'
-          run: docker push ${{secrets.DOCKER_USERNAME}}/hajar
+          run: docker push ${{secrets.HAJAR_USERNAME}}/hajar
